@@ -16,21 +16,22 @@
 		<!-- Header -->
 			<section id="header">
 				<header>
-					<span class="image avatar"><img src="images/avatar.jpg" alt="" /></span>
+					<span class="image avatar"><img src="images/smallGroup.png" alt="" /></span>
 					<h1 id="logo"><a href="#">Group 6</a></h1>
 					<p>Georgia Tech CS 2340: Objects and Design Project</p>
 				</header>
 				<nav id="nav">
 					<ul>
-						<li><a href="#one" class="active">Overview</a></li>
-						<li><a href="#two">Things I Can Do</a></li>
-						<li><a href="#three">A Few Accomplishments</a></li>
-						<li><a href="#four">Contact</a></li>
+						<li><a href="#two" class="active">Overview</a></li>
+						<li><a href="#three">Design and Architecture</a></li>
+						<li><a href="#four">User Interface (UI)</a></li>
+						<li><a href="#five">Functionality</a></li>
+						<li><a href="#six">Conclusions and Reflections</a></li>
 					</ul>
 				</nav>
 				<footer>
 					<ul class="icons">
-						<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
+						<li><a href="https://github.com/sanjanasurapaneni16/CS2340A_Team6" class="icon brands fa-github"><span class="label">Github</span></a></li>
 					</ul>
 				</footer>
 			</section>
@@ -44,31 +45,17 @@
 						<!-- One -->
 							<section id="one">
 								<div class="image main" data-position="center">
-									<img src="images/banner.jpg" alt="" />
+									<img src="images/food banner.jpg" alt="" />
 								</div>
 								<div class="container">
 									<header class="major">
 										<h2>GreenPlate</h2>
 										<p>A Sustainable Food Management System</p>
 									</header>
-									<p>	In an era where sustainability is paramount, 
-										GreenPlate emerges as a beacon of change in the realm of 
-										food management. GreenPlate is not just an app; it's a comprehensive 
-										ecosystem designed to revolutionize the way we approach food 
-										consumption and management. With a steadfast commitment to promoting 
-										sustainable practices, GreenPlate aims to empower individuals and 
-										communities to make informed choices, reduce food waste, and 
-										contribute to a healthier planet. Features such as keeping track of 
-										total calories eaten throughout the day, a list of items currently in one's
-										one's pantry, a customized shopping list with ingredients needed to cook recipes, and 
-										the option of thousands of recipes from a cookbook filled with delciious didhes,
-										promote a healthy lifestyle and help users acheive their fitness 
-										goals. By harnessing the power of technology and community, 
-										GreenPlate has the potential to drive meaningful change on a 
-										global scale. By reducing food waste, promoting sustainable 
-										eating habits, and fostering community engagement, GreenPlate 
-										empowers individuals to become agents of change in the fight 
-										against food insecurity and environmental degradation.  </p>
+									<p>	Introducing GreenPlate: Your Ultimate Companion for Sustainable Eating and Shopping. GreenPlate is your dedicated partner in fostering sustainable eating and shopping habits. Our app is designed with a singular focus: to reduce food waste and promote the efficient use of resources. With GreenPlate, users can actively contribute to a more sustainable lifestyle while enjoying the benefits of a streamlined food management system.
+										The Food Tracker app empowers users to effortlessly track their daily calorie intake, create delicious recipes, manage ingredient quantities, and generate comprehensive shopping lists. Key features include secure account creation, an intuitive interface for meal logging and calorie tracking, access to a vast database of recipes with integrated ingredient inventory monitoring, efficient pantry quantity management, and automatic shopping list generation based on missing recipe ingredients.
+										GreenPlate doesn't just provide a platform for managing your food—it offers actionable insights into recipes, ingredients, and purchasing needs for upcoming meals. Our food tracking system revolutionizes grocery shopping, dieting, and daily food preparation, making sustainable living easier and more rewarding than ever before. 
+										 </p>
 								</div>
 							</section>
 
@@ -92,8 +79,7 @@
 									<h3>Design and Architecture</h3>
 									<p> </p>
 									<div class="features">
-										<article>
-											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
+										<article>								
 											<div class="inner">
 												<h4>Archtectural Design</h4>
 												<p>A key technical decision our team made was implementing the GreenPlate app using the Model-View-ViewModel 
@@ -102,29 +88,51 @@
 													
 												</p>
 											</div>
+											<a href="#" class="image"><img src="images/MVVM.png" alt="" /></a>
 										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
-											<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
-											<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
-											<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
+										<article>										
 											<div class="inner">
 												<h4>Implementation of Design Patterns</h4>
 												<p>
-													Singleton Pattern: In our Green Plate app, both the FirebaseDatabase and the FirebaseAuth are Singleton classes, and we have implemented them as such to connect to our database. The FirebaseApp class is also a Singleton class that is used to get the connected database URL. The Singleton pattern is used to provide a single point of access. If multiple instances are instantiated, we would have unnecessary resource consumption and potential conflicts occurring including inconsistent states and resource leaks. 
-													Strategy Pattern: We implemented the Strategy Pattern to sort/filter the recipes list. The three different strategies are split from the context by using an interface. The three different strategies are split from the context by using an interface. This class holds a reference to the concrete strategies and can delegate tasks to it. It accepts a filterStrategy parameter, which represents the strategy that will be used for filtering recipes. The context isn't dependent on any specific filtering algorithm; instead, it delegates the filtering task to the strategy object.
-													Observer Pattern: We used the Observer pattern to dynamically update our display to show whether a recipe can be cooked based on the current ingredients in a pantry. We first created an interface called PantryObserver, whose only method, onPantryChanged(), allows data to be sent from an observable to an observer class. Then, we made it so our RecipeFragment class implemented the PantryObserver interface. This is because, in our implementation, RecipeFragment is an observer of the pantry, whose data is manipulated by IngredientViewModel.
-													We then provided a concrete implementation of onPantryChanged() within RecipeFragment. This implementation calls a method that we have already created, displayRecipes(), and essentially triggers a reload of the recipes on the screen whenever the pantry has been updated. We also added RecipeFragment as an observer of the IngredientViewModel through its registerObserver() method, which we will discuss a little later. Lastly, we edited our IngredientViewModel such that it contains a list of observers and created three methods: notifyObservers(), unregisterObserver(), and registerObserver(), which basically allow us to manipulate the observers to the IngredientViewModel. Earlier, we used the registerObserver() method to add RecipeFragment as an observer of IngredientViewModel.
-													4th Pattern:
+													<b>REDO Arnav's Pattern:</b> 
+													In our Green Plate app, both the FirebaseDatabase and the FirebaseAuth are Singleton classes, and we have implemented them as such to connect to our database. The FirebaseApp class is also a Singleton class that is used to get the connected database URL. The Singleton pattern is used to provide a single point of access. If multiple instances are instantiated, we would have unnecessary resource consumption and potential conflicts occurring including inconsistent states and resource leaks. 
 												</p>
+												<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
+												<p>
+													<b> Strategy Pattern: </b>
+													We implemented the Strategy Pattern to sort/filter the recipes list. RecipeFilterStrategy is the strategy interface. The concrete strategies are RecipeTypeFilterStrategy, IngredientFilterStrategy, and NoFilterStrategy which implement the RecipeFilterStrategy  interface, as they all implement the filterRecipe method. The three different strategies are split from the context by using an interface. The code included from the RecipeViewModel shows how this class functions as the Context class. This class holds a reference to the concrete strategies and can delegate tasks to it. It accepts a filterStrategy parameter, which represents the strategy that will be used for filtering recipes. The context isn't dependent on any specific filtering algorithm; instead, it delegates the filtering task to the strategy object.
+												</p>
+													<a href="#" class="image"><img src="images/Strategy.png" alt="" style="max-width: 400%; height: auto;"/></a>
+												<a href="#" class="image"><img src="images/strategy2.png" alt="" style="max-width: 400%; height: auto;"/></a>
+												<p>
+													<b>Observer Pattern: </b>
+													We used the Observer pattern to dynamically update our display to show whether a recipe can be cooked based on the current ingredients in a pantry. We first created an interface called PantryObserver, whose only method, onPantryChanged(), allows data to be sent from an observable to an observer class. 
+												</p>	
+												<a href="#" class="image"><img src="images/ob1.png" alt="" style="max-width: 600%; height: auto;"/></a>
+												<p>
+													Then, we made it so our RecipeFragment class implemented the PantryObserver interface. This is because, in our implementation, RecipeFragment is an observer of the pantry, whose data is manipulated by IngredientViewModel.									
+													We then provided a concrete implementation of onPantryChanged() within RecipeFragment. This implementation calls a method that we have already created, displayRecipes(), and essentially triggers a reload of the recipes on the screen whenever the pantry has been updated. We also added RecipeFragment as an observer of the IngredientViewModel through its registerObserver() method. 
+												</p>
+												<a href="#" class="image"><img src="images/ob2.png" alt="" style="max-width: 500px; height: auto;"/></a>
+												<p>
+													Lastly, we edited our IngredientViewModel such that it contains a list of observers and created three methods: notifyObservers(), unregisterObserver(), and registerObserver(), which basically allow us to manipulate the observers to the IngredientViewModel. Earlier, we used the registerObserver() method to add RecipeFragment as an observer of IngredientViewModel.																								
+												</p>
+												<a href="#" class="image"><img src="images/ob3.png" alt="" style="max-width: 500px; height: auto;"/></a>
 											</div>
 										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a>
+										<article>											
 											<div class="inner">
 												<h4>Design Class Diagram</h4>
-												<p> This a visual representation of the Design Class Diagram (DCD) thatt encompasses the overall structure of our application. It shows the relationships and dependencies among the different models, views, view models present in the implementation of GreenPlate.</p>
+												<p> This a visual representation of the Design Class Diagram (DCD) that encompasses the overall structure of our application. It shows the relationships and dependencies among the different models, views, view models present in the implementation of GreenPlate.</p>
 											</div>
+											<a href="#" class="image"><img src="images/DCD.drawio.png" alt="" /></a>
+										</article>
+										<article>											
+											<div class="inner">
+												<h4>Sequence Diagram</h4>
+												<p> This a visual representation of the use case for adding an ingredient to a user's pantry with a sequence diagram. Sequence diagrams show the interaction between the actor and the different components of the system.</p>
+											</div>
+											<a href="#" class="image"><img src="images/SD.png" alt="" /></a>
 										</article>
 									</div>
 								</div>
@@ -136,15 +144,7 @@
 									<p></p>
 									<div class="features">
 										<article>
-											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
-											<div class="inner">
-												<h4>Welcome Screen</h4>
-												<p> This screen is what the user sees when they first open the screen.
-												</p>
-											</div>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
+											<a href="#" class="image"><img src="images/login.png" alt="" style="max-width: 50%; height: auto;"/></a>
 											<div class="inner">
 												<h4>Login Screen</h4>
 												<p>	This is a login page for existing users to enter their username and password.
@@ -157,15 +157,15 @@
 											</div>
 										</article>
 										<article>
-											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
+											<a href="#" class="image"><img src="images/nav.png" alt="" style="max-width: 50%; height: auto;"/></a>
 											<div class="inner">
-												<h4>Home Screen</h4>
-												<p> This screen provides an introduction to the application for the user and essentially serves as base screen when navigating through GreenPlate.
+												<h4>Navigation Screen</h4>
+												<p> This screen provides a navigation bar for the user to switch between the multiple screens of GreenPlate. It is represented by three horizontal bars on the top left corner of the home screen.
 												</p>
 											</div>
 										</article>
 										<article>
-											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
+											<a href="#" class="image"><img src="images/inputMeal.png" alt="" style="max-width: 50%; height: auto;"/></a>
 											<div class="inner">
 												<h4>Input Meal Screen</h4>
 												<p> This is where users log their meals, including the name and estimated calorie count of each meal. There is a form for meal entry and the entries are stored in the Meal database. 
@@ -173,7 +173,7 @@
 											</div>
 										</article>
 										<article>
-											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
+											<a href="#" class="image"><img src="images/recipe.png" alt=""style="max-width: 50%; height: auto;"/></a>
 											<div class="inner">
 												<h4>Recipe Screen</h4>
 												<p> This is where users type the ingredient name and required quantity for one serving size. This recipe and ingredient data is stored in the cookbook database. It also shows the availability of ingredients for each recipe based on the pantry database.
@@ -181,23 +181,23 @@
 											</div>
 										</article>
 										<article>
-											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
+											<a href="#" class="image"><img src="images/ingredient.png" alt="" style="max-width: 50%; height: auto;"/></a>
 											<div class="inner">
 												<h4>Ingredient Screen</h4>
-												<p> This is where users manually update the pantry databse. It allows features such as adding new items, updating quantities, and removing used ingredients. This offers a detailed view of the pantry inventory.
+												<p> This is where users manually update the pantry database. It allows features such as adding new items, updating quantities, and removing used ingredients. This offers a detailed view of the pantry inventory.
 												</p>
 											</div>
 										</article>
 										<article>
-											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
+											<a href="#" class="image"><img src="images/shopping.png" alt="" style="max-width: 50%; height: auto;"/></a>
 											<div class="inner">
 												<h4>Shopping List Screen</h4>
-												<p> This is where users are presented with a table virw that displays the ingredients in the shopping along with their respective quantities. It has features such as manual entry and removal of items on the table.
+												<p> This is where users are presented with a table view that displays the ingredients in the shopping along with their respective quantities. It has features such as manual entry and removal of items on the table.
 												</p>
 											</div>
 										</article>
 										<article>
-											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
+											<a href="#" class="image"><img src="images/personal.png" alt="" style="max-width: 50%; height: auto;"/></a>
 											<div class="inner">
 												<h4>Personal Information Screen</h4>
 												<p> This is where users enter infomation such as their height, weight, and gender, so the application can calculate a daily calorie goal.
