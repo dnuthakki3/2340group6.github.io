@@ -51,7 +51,24 @@
 										<h2>GreenPlate</h2>
 										<p>A Sustainable Food Management System</p>
 									</header>
-									<p>Faucibus sed lobortis aliquam lorem blandit. Lorem eu nunc metus col. Commodo id in arcu ante lorem ipsum sed accumsan erat praesent faucibus commodo ac mi lacus. Adipiscing mi ac commodo. Vis aliquet tortor ultricies non ante erat nunc integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum.</p>
+									<p>	In an era where sustainability is paramount, 
+										GreenPlate emerges as a beacon of change in the realm of 
+										food management. GreenPlate is not just an app; it's a comprehensive 
+										ecosystem designed to revolutionize the way we approach food 
+										consumption and management. With a steadfast commitment to promoting 
+										sustainable practices, GreenPlate aims to empower individuals and 
+										communities to make informed choices, reduce food waste, and 
+										contribute to a healthier planet. Features such as keeping track of 
+										total calories eaten throughout the day, a list of items currently in one's
+										one's pantry, a customized shopping list with ingredients needed to cook recipes, and 
+										the option of thousands of recipes from a cookbook filled with delciious didhes,
+										promote a healthy lifestyle and help users acheive their fitness 
+										goals. By harnessing the power of technology and community, 
+										GreenPlate has the potential to drive meaningful change on a 
+										global scale. By reducing food waste, promoting sustainable 
+										eating habits, and fostering community engagement, GreenPlate 
+										empowers individuals to become agents of change in the fight 
+										against food insecurity and environmental degradation.  </p>
 								</div>
 							</section>
 
@@ -59,7 +76,7 @@
 							<section id="two">
 								<div class="container">
 									<h3>Overview</h3>
-									<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum integer lorem ipsum dolor sit amet.</p>
+									<p></p>
 									<ul class="feature-icons">
 										<li class="icon solid fa-cubes">Design and Architecture</li>
 										<li class="icon solid fa-book">User Interface (UI)</li>
@@ -72,53 +89,161 @@
 						<!-- Three -->
 							<section id="three">
 								<div class="container">
-									<h3>A Few Accomplishments</h3>
-									<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum integer. Integer eu ante ornare amet commetus.</p>
+									<h3>Design and Architecture</h3>
+									<p> </p>
 									<div class="features">
 										<article>
 											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
 											<div class="inner">
-												<h4>Possibly broke spacetime</h4>
-												<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet.</p>
+												<h4>Archtectural Design</h4>
+												<p>A key technical decision our team made was implementing the GreenPlate app using the Model-View-ViewModel 
+													(MVVM) architectural pattern. MVVM helped us cleanly separate the app's user interface code (views) from the backend business logic (view models).
+													We took advantage of one of the key features of MVVM - the ability to communicate between view models and views using observables like LiveData. This pattern was replicated across multiple screens and enabled us to maintain loose coupling between the view and view model layers. Changes to the business logic in the view models did not require corresponding changes to the views; the views simply reacted based on observable data. Using MVVM and LiveData like this accelerated our development. We could focus on building robust view models for core app behavior independently from UI code. Our app architecture is now much cleaner and more testable as a result.
+													
+												</p>
 											</div>
 										</article>
 										<article>
 											<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
+											<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
+											<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
+											<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
 											<div class="inner">
-												<h4>Terraformed a small moon</h4>
-												<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet.</p>
+												<h4>Implementation of Design Patterns</h4>
+												<p>
+													Singleton Pattern: In our Green Plate app, both the FirebaseDatabase and the FirebaseAuth are Singleton classes, and we have implemented them as such to connect to our database. The FirebaseApp class is also a Singleton class that is used to get the connected database URL. The Singleton pattern is used to provide a single point of access. If multiple instances are instantiated, we would have unnecessary resource consumption and potential conflicts occurring including inconsistent states and resource leaks. 
+													Strategy Pattern: We implemented the Strategy Pattern to sort/filter the recipes list. The three different strategies are split from the context by using an interface. The three different strategies are split from the context by using an interface. This class holds a reference to the concrete strategies and can delegate tasks to it. It accepts a filterStrategy parameter, which represents the strategy that will be used for filtering recipes. The context isn't dependent on any specific filtering algorithm; instead, it delegates the filtering task to the strategy object.
+													Observer Pattern: We used the Observer pattern to dynamically update our display to show whether a recipe can be cooked based on the current ingredients in a pantry. We first created an interface called PantryObserver, whose only method, onPantryChanged(), allows data to be sent from an observable to an observer class. Then, we made it so our RecipeFragment class implemented the PantryObserver interface. This is because, in our implementation, RecipeFragment is an observer of the pantry, whose data is manipulated by IngredientViewModel.
+													We then provided a concrete implementation of onPantryChanged() within RecipeFragment. This implementation calls a method that we have already created, displayRecipes(), and essentially triggers a reload of the recipes on the screen whenever the pantry has been updated. We also added RecipeFragment as an observer of the IngredientViewModel through its registerObserver() method, which we will discuss a little later. Lastly, we edited our IngredientViewModel such that it contains a list of observers and created three methods: notifyObservers(), unregisterObserver(), and registerObserver(), which basically allow us to manipulate the observers to the IngredientViewModel. Earlier, we used the registerObserver() method to add RecipeFragment as an observer of IngredientViewModel.
+													4th Pattern:
+												</p>
 											</div>
 										</article>
 										<article>
 											<a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a>
 											<div class="inner">
-												<h4>Snapped dark matter in the wild</h4>
-												<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet.</p>
+												<h4>Design Class Diagram</h4>
+												<p> This a visual representation of the Design Class Diagram (DCD) thatt encompasses the overall structure of our application. It shows the relationships and dependencies among the different models, views, view models present in the implementation of GreenPlate.</p>
 											</div>
 										</article>
 									</div>
 								</div>
 							</section>
 
-						<!-- Four -->
 							<section id="four">
 								<div class="container">
-									<h3>Contact Me</h3>
-									<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum integer. Integer eu ante ornare amet commetus.</p>
-									<form method="post" action="#">
-										<div class="row gtr-uniform">
-											<div class="col-6 col-12-xsmall"><input type="text" name="name" id="name" placeholder="Name" /></div>
-											<div class="col-6 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Email" /></div>
-											<div class="col-12"><input type="text" name="subject" id="subject" placeholder="Subject" /></div>
-											<div class="col-12"><textarea name="message" id="message" placeholder="Message" rows="6"></textarea></div>
-											<div class="col-12">
-												<ul class="actions">
-													<li><input type="submit" class="primary" value="Send Message" /></li>
-													<li><input type="reset" value="Reset Form" /></li>
-												</ul>
+									<h3>User Interface (UI)</h3>
+									<p></p>
+									<div class="features">
+										<article>
+											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
+											<div class="inner">
+												<h4>Welcome Screen</h4>
+												<p> This screen is what the user sees when they first open the screen.
+												</p>
 											</div>
-										</div>
-									</form>
+										</article>
+										<article>
+											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
+											<div class="inner">
+												<h4>Login Screen</h4>
+												<p>	This is a login page for existing users to enter their username and password.
+													For new users, it provides a button to navigate to an account creation screen.
+													There is also account creation functionality where users can register with a new username and
+													password.
+													The app uses Firebase's authentication system to manage user credentials securely which are stored in the user
+													database.						
+												</p>
+											</div>
+										</article>
+										<article>
+											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
+											<div class="inner">
+												<h4>Home Screen</h4>
+												<p> This screen provides an introduction to the application for the user and essentially serves as base screen when navigating through GreenPlate.
+												</p>
+											</div>
+										</article>
+										<article>
+											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
+											<div class="inner">
+												<h4>Input Meal Screen</h4>
+												<p> This is where users log their meals, including the name and estimated calorie count of each meal. There is a form for meal entry and the entries are stored in the Meal database. 
+												</p>
+											</div>
+										</article>
+										<article>
+											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
+											<div class="inner">
+												<h4>Recipe Screen</h4>
+												<p> This is where users type the ingredient name and required quantity for one serving size. This recipe and ingredient data is stored in the cookbook database. It also shows the availability of ingredients for each recipe based on the pantry database.
+												</p>
+											</div>
+										</article>
+										<article>
+											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
+											<div class="inner">
+												<h4>Ingredient Screen</h4>
+												<p> This is where users manually update the pantry databse. It allows features such as adding new items, updating quantities, and removing used ingredients. This offers a detailed view of the pantry inventory.
+												</p>
+											</div>
+										</article>
+										<article>
+											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
+											<div class="inner">
+												<h4>Shopping List Screen</h4>
+												<p> This is where users are presented with a table virw that displays the ingredients in the shopping along with their respective quantities. It has features such as manual entry and removal of items on the table.
+												</p>
+											</div>
+										</article>
+										<article>
+											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
+											<div class="inner">
+												<h4>Personal Information Screen</h4>
+												<p> This is where users enter infomation such as their height, weight, and gender, so the application can calculate a daily calorie goal.
+												</p>
+											</div>
+										</article>
+									</div>
+								</div>
+							</section>
+
+							<section id="five">
+								<div class="container">
+									<h3>Functionality</h3>
+									<p></p>
+									<div class="features">
+										<article>
+											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
+											<div class="inner">
+												<h4>Video Demonstration</h4>
+												<p> Here is a walkthrough of the app's functionality which offers direct insight into its operational features and user interface.
+												</p>
+											</div>
+										</article>
+									</div>
+								</div>
+							</section>
+
+							<section id="six">
+								<div class="container">
+									
+										<h3>Conclusions and Reflections/Learning</h3>
+				
+									<p>Reflecting on the outcomes of our project, we are proud to say that we've achieved significant milestones and delivered a product that aligns closely with our initial vision. Our contributions to the project have been multifaceted, encompassing everything from conceptualization and design to development and testing.
+
+										One of the key challenges encountered during the development process was striking the right balance between functionality and user experience. We wanted to create a feature-rich app that also remained intuitive and easy to navigate for our users. This required careful planning, iteration, and user feedback to ensure that every aspect of the app was both robust and user-friendly. Throughout the development process, we've gained valuable insights into the intricacies of sustainable food management and the importance of user-centered design. We've also honed our skills in project management, communication, and problem-solving, as we navigated through various obstacles and worked collaboratively to find solutions.
+
+										Overall, the journey of developing this app has been immensely rewarding. Not only have we created a valuable tool to promote sustainable eating habits, but we've also learned valuable lessons and forged strong bonds as a team. As we continue to refine and improve our app, we're excited to see the positive impact it will have on individuals and communities striving for a more sustainable future.</p>
+								</div>
+							</section>
+
+						<!-- Seven -->
+							<section id="seven">
+								<div class="container">
+								
+									<h3>Contributors</h3>
+									<p>Arnav Patidar, David Nuthakki, Lily Fischer, Rohan Gandham, Sanjana Surapaneni, and Varoon Kodithala</p>
 								</div>
 							</section>
 
