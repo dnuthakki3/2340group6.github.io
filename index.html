@@ -92,33 +92,70 @@
 										</article>
 										<article>										
 											<div class="inner">
-												<h4>Implementation of Design Patterns</h4>
-												<p>
-													<b>REDO Arnav's Pattern:</b> 
-													In our Green Plate app, both the FirebaseDatabase and the FirebaseAuth are Singleton classes, and we have implemented them as such to connect to our database. The FirebaseApp class is also a Singleton class that is used to get the connected database URL. The Singleton pattern is used to provide a single point of access. If multiple instances are instantiated, we would have unnecessary resource consumption and potential conflicts occurring including inconsistent states and resource leaks. 
-												</p>
-												<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
-												<p>
-													<b> Strategy Pattern: </b>
+												<h4>Implementation of Design Patterns</h4>											
+												
+											</div>
+											</article>
+										<article>										
+											<div class="inner">
+												<p> <b> Strategy Pattern: </b>
 													We implemented the Strategy Pattern to sort/filter the recipes list. RecipeFilterStrategy is the strategy interface. The concrete strategies are RecipeTypeFilterStrategy, IngredientFilterStrategy, and NoFilterStrategy which implement the RecipeFilterStrategy  interface, as they all implement the filterRecipe method. The three different strategies are split from the context by using an interface. The code included from the RecipeViewModel shows how this class functions as the Context class. This class holds a reference to the concrete strategies and can delegate tasks to it. It accepts a filterStrategy parameter, which represents the strategy that will be used for filtering recipes. The context isn't dependent on any specific filtering algorithm; instead, it delegates the filtering task to the strategy object.
-												</p>
-													<a href="#" class="image"><img src="images/Strategy.png" alt="" style="max-width: 400%; height: auto;"/></a>
-												<a href="#" class="image"><img src="images/strategy2.png" alt="" style="max-width: 400%; height: auto;"/></a>
+												</p> 
+												</div>
+													<a href="#" class="image"><img src="images/Strategy.png" alt="" /></a>
+													<a href="#" class="image"><img src="images/strategy2.png" alt="" /></a>
+												</article>
+										<article>										
+											<div class="inner">
 												<p>
 													<b>Observer Pattern: </b>
 													We used the Observer pattern to dynamically update our display to show whether a recipe can be cooked based on the current ingredients in a pantry. We first created an interface called PantryObserver, whose only method, onPantryChanged(), allows data to be sent from an observable to an observer class. 
-												</p>	
-												<a href="#" class="image"><img src="images/ob1.png" alt="" style="max-width: 600%; height: auto;"/></a>
+												</p>
+											</div>	
+												<a href="#" class="image"><img src="images/ob1.png" alt="" /></a>
+											</article>
+											<article>										
+												<div class="inner">
 												<p>
 													Then, we made it so our RecipeFragment class implemented the PantryObserver interface. This is because, in our implementation, RecipeFragment is an observer of the pantry, whose data is manipulated by IngredientViewModel.									
 													We then provided a concrete implementation of onPantryChanged() within RecipeFragment. This implementation calls a method that we have already created, displayRecipes(), and essentially triggers a reload of the recipes on the screen whenever the pantry has been updated. We also added RecipeFragment as an observer of the IngredientViewModel through its registerObserver() method. 
 												</p>
-												<a href="#" class="image"><img src="images/ob2.png" alt="" style="max-width: 500px; height: auto;"/></a>
+												</div>
+												<a href="#" class="image"><img src="images/ob2.png" alt="" /></a>
+												</article>
+												<article>										
+													<div class="inner">
 												<p>
 													Lastly, we edited our IngredientViewModel such that it contains a list of observers and created three methods: notifyObservers(), unregisterObserver(), and registerObserver(), which basically allow us to manipulate the observers to the IngredientViewModel. Earlier, we used the registerObserver() method to add RecipeFragment as an observer of IngredientViewModel.																								
 												</p>
-												<a href="#" class="image"><img src="images/ob3.png" alt="" style="max-width: 500px; height: auto;"/></a>
+											</div>									
+												<a href="#" class="image"><img src="images/ob3.png" alt="" /></a>
+											
+										<article>											
+											<div class="inner">
+												<h4>Implementation of SOLID/GRASP Principles </h4>
+												<p> Throughout our code we followed many SOLID/GRASP principles. We will showcase an example of one principle from both SOLID and GRASP</p>
+										</div>
+										</article>
+										<article>										
+											<div class="inner">
+												<p> <b> SOLID: Single Responsibility Principle  - </b>
+													The CalorieGoal class’s sole responsibility is to calculate a calorie goal for the user based on their height, weight, and gender. Previously, calculateCalorieGoal() was a method defined in InputMealViewModel Class, but this class already had many other responsibilities. By transferring this functionality into its own CalorieGoal class, we were able to calculate a calorie goal in other parts of our codebase without exposing the functionality of the InputMealViewModel class. Additionally, if any changes were needed to be made to calculateCalorieGoal(), InputMealViewModel would not be directly affected.
+												</p>
 											</div>
+											<a href="#" class="image"><img src="images/solid.png" alt="" /></a>
+											</article>
+										<article>
+											<div class="inner">
+												<p> 
+													<p> <b> GRASP: Creator Pattern  - </b>
+														The Ingredient class is instantiated in the IngredientViewModel. Per the Creator Pattern from GRASP, the class that creates another class must contain or aggregate that class, have the initializing data for that class, record that class, or closely use that class. 
+														The setIngredients() function within the IngredientViewModel grabs data from our Firebase database, which includes the name, quantity, calories, and expiration date for each ingredient. This means it has all of the initializing data for the Ingredient class and is thus suitable to be a Creator via the Creator design pattern. Here’s evidence that the initializing data for an Ingredient is extracted from Firebase:
+
+													</p>
+												</p>
+											</div>
+											<a href="#" class="image"><img src="images/grasp.png" alt="" /></a>
 										</article>
 										<article>											
 											<div class="inner">
@@ -214,7 +251,7 @@
 									<p></p>
 									<div class="features">
 										<article>
-											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
+											<iframe width="560" height="315" src="https://www.youtube.com/embed/kkF17MOpiTE" frameborder="0" allowfullscreen></iframe>
 											<div class="inner">
 												<h4>Video Demonstration</h4>
 												<p> Here is a walkthrough of the app's functionality which offers direct insight into its operational features and user interface.
